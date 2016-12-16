@@ -1,0 +1,28 @@
+<head>
+  <title>IMAGENi</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+  {{> uploadForm }}
+  {{> uploadedFiles }}
+</body>
+
+<template name="uploadForm">
+  {{#with currentUpload}}
+    Uploading <b>{{file.name}}</b>: 
+    <span id="progress">{{progress.get}}%</span>
+  {{else}}
+    <input id="fileInput" type="file" />
+  {{/with}}
+</template>
+
+<template name="uploadedFiles">
+  {{#each file in images.each}}
+    {{>image file=file}}
+  {{/each}}
+</template>
+
+<template name="image">
+  <img src="{{file.link}}" />
+</template>
